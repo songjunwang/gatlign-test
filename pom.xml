@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wsj.gatling</groupId>
+    <artifactId>gatling-test</artifactId>
+    <version>3.4.2</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gatling.version>${project.version}</gatling.version>
+        <gatling-maven-plugin.version>3.1.0</gatling-maven-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <scala-maven-plugin.version>4.4.0</scala-maven-plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>${gatling.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.47</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>${gatling-maven-plugin.version}</version>
+                <configuration>
+                    <simulationClass>com.wsj.gatling.HotelSalePreApiSimulation</simulationClass>                               <!-- the name of the single Simulation class to run -->
+<!--                    <simulationClass>com.wsj.gatling.UserCardOrderSimulation</simulationClass>                               &lt;!&ndash; the name of the single Simulation class to run &ndash;&gt;-->
+                    <!--<runMultipleSimulations>false</runMultipleSimulations>                   &lt;!&ndash; if the plugin should run multiple simulations sequentially &ndash;&gt;
+                    <includes>                                                               &lt;!&ndash; include filters, see dedicated section below &ndash;&gt;
+                        <include></include>
+                    </includes>
+                    <excludes>                                                               &lt;!&ndash; exclude filters, see dedicated section below &ndash;&gt;
+                        <exclude></exclude>
+                    </excludes>
+                    <noReports>false</noReports>                                             &lt;!&ndash; to disable generating HTML reports &ndash;&gt;
+                    <reportsOnly></reportsOnly>                                              &lt;!&ndash; to only trigger generating HTML reports from the log file contained in folder parameter &ndash;&gt;
+                    <runDescription>This-is-the-run-description</runDescription>             &lt;!&ndash; short text that will be displayed in the HTML reports &ndash;&gt;
+                    <skip>false</skip>                                                       &lt;!&ndash; skip executing this plugin &ndash;&gt;
+                    <failOnError>true</failOnError>                                          &lt;!&ndash; report failure in case of assertion failure, typically to fail CI pipeline &ndash;&gt;
+                    <continueOnAssertionFailure>false</continueOnAssertionFailure>           &lt;!&ndash; keep on executing multiple simulations even if one fails &ndash;&gt;
+                    <useOldJenkinsJUnitSupport>false</useOldJenkinsJUnitSupport>             &lt;!&ndash; report results to Jenkins JUnit support (workaround until we manage to get Gatling support into Jenkins) &ndash;&gt;
+                    <jvmArgs>
+                        <jvmArg>-DmyExtraParam=foo</jvmArg>                                    &lt;!&ndash; pass extra parameters to the Gatling JVM &ndash;&gt;
+                    </jvmArgs>
+                    <overrideJvmArgs>false</overrideJvmArgs>                                 &lt;!&ndash; if above option should override the defaults instead of replacing them &ndash;&gt;
+                    <propagateSystemProperties>true</propagateSystemProperties>              &lt;!&ndash; if System properties from the maven JVM should be propagated to the Gatling forked one &ndash;&gt;
+                    <compilerJvmArgs>
+                        <compilerJvmArg>-DmyExtraParam=foo</compilerJvmArg>                    &lt;!&ndash; pass extra parameters to the Compiler JVM &ndash;&gt;
+                    </compilerJvmArgs>
+                    <overrideCompilerJvmArgs>false</overrideCompilerJvmArgs>                 &lt;!&ndash; if above option should override the defaults instead of replacing them &ndash;&gt;
+                    <extraScalacOptions>                                                     &lt;!&ndash; extra options to be passed to scalac &ndash;&gt;
+                        <extraScalacOption></extraScalacOption>
+                    </extraScalacOptions>
+                    <disableCompiler>false</disableCompiler>                                 &lt;!&ndash; if compiler should be disabled, typically because another plugin has already compiled sources &ndash;&gt;
+                    <simulationsFolder>${project.basedir}/src/test/scala</simulationsFolder> &lt;!&ndash; where the simulations to be compiled are located &ndash;&gt;
+                    <resourcesFolder>${project.basedir}/src/test/resources</resourcesFolder> &lt;!&ndash; where the test resources are located &ndash;&gt;
+                    <resultsFolder>${project.basedir}/target/gatling</resultsFolder>         &lt;!&ndash; where the simulation log and the HTML reports will be generated &ndash;&gt;
+                    <workingDirectory>${project.basedir}</workingDirectory>-->
+                    <!--   ...  -->
+
+                    <!--<runMultipleSimulations>true</runMultipleSimulations>
+                    <includes>
+                        <include>my.package.*</include>
+                    </includes>
+                    <excludes>
+                        <exclude>my.package.IgnoredSimulation</exclude>
+                    </excludes>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
